@@ -1,0 +1,17 @@
+"amixer set Master 5%+"
+        XF86AudioRaiseVolume
+
+"amixer set Master 5%-"
+        XF86AudioLowerVolume
+
+"amixer set Master toggle"
+        XF86AudioMute
+
+"light -A 5"
+        XF86MonBrightnessUp
+
+"light -U 5"
+        XF86MonBrightnessDown
+
+"flameshot gui"
+	Print
