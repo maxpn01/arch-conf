@@ -1,43 +1,41 @@
-# Arch Installation Manual
+# Arch setup
 
-## Set keyboard layout
+### Set keyboard layout
 ls /usr/share/kbd/keymaps/**/*.map.gz
 loadkeys en ru
 
-## Connect to internet
+### Connect to internet
 ip link - list network interfaces
-// Wifi
 iwctl
 device list
 station device scan
 station device get-networks
 station device connect SSID
-// check connection
 ping archlinux.org
 
-## Update system clock
+### Update system clock
 timedatectl set-ntp true
 timedatectl status
 
-## Partitioning
+### Partitioning
 cfdisk
     EFI
     Swap
     Linux system
 
-## Format the partitions
+### Format the partitions
 mkfs.fat -F32 /dev/efi_part
 mkswap /dev/swap_part
 mkfs.btrfs /dev/root_part
 
-## Mount file systems
+### Mount file systems
 mount /dev/root_part /mnt
 swapon /dev/swap_part
 
-## Install essential packages
+### Install essential packages
 pacstrap /mnt base linux linux-firmware
 
-## Configure the system
+### Configure the system
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
@@ -76,11 +74,11 @@ reboot
 sudo pacman -S xf86-video-intel nvidia xorg xorg-xinit xwallpaper
 sudo pacman -S qtile base-devel dmenu
 
-git clone https://aur.archlinux.org/yay-git.git
-cd yay-git/
+git clone https://aur.archlinux.org/paru.git
+cd paru
 makepkg -si
 
-yay -S brave-bin ttf-jetbrains-mono exa neovim
+paru -S brave-bin ttf-jetbrains-mono exa neovim
 
 cp /etc/X11/xinit/xinitrc /home/name/.xinit
     xbindkeys &
@@ -90,21 +88,18 @@ startx
 
 
 ## Installing main software
-sudo pacman -S xbindkeys p7zip alsa-tools pulseaudio
+sudo pacman -S xbindkeys p7zip alsa-tools pulseaudio bat
 sudo pacman -S pulseaudio-alsa pavucontrol light flameshot
 sudo pacman -S ranger htop neofetch gparted mtpfs jmptfs
-sudo pacman -S sxiv zathura zathura-djvu zathura-pdf-mupdf thunar
+sudo pacman -S sxiv mpv zathura zathura-djvu zathura-pdf-mupdf thunar
 
 copy .bashrc ~/
-copy xbindkeysrc ~/
-mkdir .config/alacritty
-mkdir .config/qtile
-mkdir .config/nvim
-copy alacritty.yml .config/alacritty
-copy config.py .config/qtile 
-copy init.vim .config/nvim
+copy .xbindkeysrc ~/
+copy alacritty.yml .config/alacritty/
+copy config.py .config/qtile/
+copy init.vim .config/nvim/
 
-yay -S telegram-desktop rnote notion-app
+paru -S telegram-desktop rnote notion-app visual-studio-code-bin
 
 
 ## List of software
@@ -120,4 +115,5 @@ yay -S telegram-desktop rnote notion-app
 - pulseaudio-alsa, pavucontrol, light, flameshot
 - ranger, htop, neofetch, gparted, mtpfs, jmptfs
 - sxiv, zathura, zathura-djvu, zathura-pdf-mupdf, thunar
-- telegram-desktop, rnote, notion-app
+- telegram-desktop, rnote, notion-app, visual-studio-code-bin
+- bat, xp-pen-tablet
