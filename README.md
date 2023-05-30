@@ -5,7 +5,6 @@
 - ls /usr/share/kbd/keymaps/**/*.map.gz
 - loadkeys en ru
 
-
 ## Connect to internet
 
 - ip link
@@ -77,25 +76,18 @@
 - umount -R /mnt
 - reboot
 
-
-
 ## Graphics
 
 - sudo pacman -S xf86-video-intel nvidia xorg xorg-xinit xwallpaper
 - sudo pacman -S qtile base-devel dmenu
-
 - git clone https://aur.archlinux.org/paru.git
 - cd paru
 - makepkg -si
-
 - paru -S brave-bin ttf-jetbrains-mono exa neovim
-
 - cp /etc/X11/xinit/xinitrc /home/name/.xinit
     - xbindkeys &
     - exec qtile start
 - startx
-
-
 
 ## Installing main software
 
@@ -103,15 +95,12 @@
 - sudo pacman -S pulseaudio-alsa pavucontrol light flameshot
 - sudo pacman -S ranger htop neofetch gparted mtpfs jmptfs
 - sudo pacman -S sxiv mpv zathura zathura-djvu zathura-pdf-mupdf thunar
-
 - copy .bashrc ~/
 - copy .xbindkeysrc ~/
 - copy alacritty.yml .config/alacritty/
 - copy config.py .config/qtile/
 - copy init.vim .config/nvim/
-
 - paru -S telegram-desktop rnote notion-app visual-studio-code-bin
-
 
 ## List of software
 
